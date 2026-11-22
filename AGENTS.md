@@ -28,3 +28,7 @@ use the editor.
   own key and store it in Secrets.
 - **Secrets.** Lovable manages them. Do not put secret values in the repo.
 <!-- LOVABLE:END -->
+
+## Project rules
+- All portfolio text/links live in `src/content/portfolio.ts`; components only render it — keeps content easy to edit.
+- Deployed as a static prerendered site to GitHub Pages via `.github/workflows/deploy.yml` (NITRO_PRESET=github_pages); no backend.
