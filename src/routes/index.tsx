@@ -1,6 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { useEffect, type ReactNode } from "react";
-import { ArrowUpRight, Github, ScanLine, Camera, Cpu, Layers, Code2, Smartphone } from "lucide-react";
+import { ArrowUpRight, Download, Github, ScanLine, Camera, Cpu, Layers, Code2, Smartphone } from "lucide-react";
 import { profile, skills, featured, projects, socials } from "@/content/portfolio";
 
 const title = `${profile.name} — ${profile.role}`;
@@ -138,23 +138,41 @@ function Index() {
                 <span key={t} className="rounded-full border border-border px-3 py-1 font-mono text-xs text-accent">{t}</span>
               ))}
             </div>
-            <a href={featured.link} target="_blank" rel="noreferrer" className="mt-8 inline-flex items-center gap-2 font-medium text-accent hover:underline">
-              View on GitHub <ArrowUpRight className="size-4" />
-            </a>
+            <ul className="mt-7 grid gap-3 sm:grid-cols-2">
+              {featured.points.map((pt) => (
+                <li key={pt} className="flex items-start gap-2 text-sm text-muted-foreground">
+                  <span className="bg-gradient-brand mt-1.5 size-1.5 shrink-0 rounded-full" />
+                  {pt}
+                </li>
+              ))}
+            </ul>
+            <div className="mt-8 flex flex-wrap items-center gap-4">
+              <a href={featured.download} className="bg-gradient-brand shadow-glow inline-flex items-center gap-2 rounded-full px-6 py-3 font-medium text-primary-foreground transition-transform hover:-translate-y-0.5">
+                <Download className="size-4" /> Download APK
+              </a>
+              <a href={featured.link} target="_blank" rel="noreferrer" className="glass inline-flex items-center gap-2 rounded-full px-6 py-3 font-medium transition-colors hover:text-accent">
+                <Github className="size-4" /> View on GitHub
+              </a>
+            </div>
           </div>
         </Section>
 
         <Section id="projects" label="projects" title="Projects">
           <div className="grid gap-4 md:grid-cols-2">
             {projects.map((p) => (
-              <a key={p.title} href={p.link} target="_blank" rel="noreferrer" className="glass group flex flex-col p-6 transition-all hover:-translate-y-1 hover:shadow-glow">
-                <div className="flex items-center justify-between">
+              <div key={p.title} className="glass group flex flex-col p-6 transition-all hover:-translate-y-1 hover:shadow-glow">
+                <a href={p.link} target="_blank" rel="noreferrer" className="flex items-center justify-between">
                   <h3 className="text-xl font-semibold">{p.title}</h3>
                   <ArrowUpRight className="size-5 text-muted-foreground transition-all group-hover:rotate-45 group-hover:text-accent" />
-                </div>
+                </a>
                 <p className="mt-2 text-muted-foreground">{p.description}</p>
                 <p className="mt-4 font-mono text-xs text-accent">{p.tech.join(" · ")}</p>
-              </a>
+                {p.download && (
+                  <a href={p.download} className="mt-5 inline-flex items-center gap-2 self-start rounded-full border border-border px-4 py-2 text-sm text-accent transition-colors hover:border-accent/60">
+                    <Download className="size-4" /> Download APK
+                  </a>
+                )}
+              </div>
             ))}
           </div>
         </Section>

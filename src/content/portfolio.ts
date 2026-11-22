@@ -22,18 +22,28 @@ export const skills = [
 export const featured = {
   title: "ApnaScan",
   subtitle: "Document & ID Scanner",
-  description: "An Android app for scanning documents and ID cards, built with Kotlin and Jetpack Compose on top of CameraX, OpenCV and ML Kit.",
-  tech: ["Kotlin", "Jetpack Compose", "CameraX", "OpenCV", "ML Kit"],
-  link: "https://github.com/girdhari-jaat",
+  description:
+    "A fast, offline-first Android document scanner built with native Kotlin and Jetpack Compose on top of CameraX, OpenCV, ML Kit and Google AI Edge LiteRT. Capture, correct, annotate and export print-quality PDFs — all on the device.",
+  tech: ["Kotlin", "Jetpack Compose", "CameraX", "OpenCV", "ML Kit", "LiteRT"],
+  points: [
+    "Offline-first: no INTERNET permission in the app manifest",
+    "Non-destructive editing — crops, rotations and 9 filters stored as metadata",
+    "PDF export with page sizes, DPI, password protection and watermarks",
+    "English, Urdu, Sindhi and Hindi with full right-to-left layout mirroring",
+  ],
+  link: "https://github.com/girdhari-jaat/ApnaScan-Download",
+  download: "https://github.com/girdhari-jaat/ApnaScan-Download/releases/download/v1.0.0/ApnaScan.apk",
+  release: "https://github.com/girdhari-jaat/ApnaScan-Download/releases/tag/v1.0.0",
 };
 
 // Add more projects here: { title, description, tech, link }
-export const projects: { title: string; description: string; tech: string[]; link: string }[] = [
+export const projects: { title: string; description: string; tech: string[]; link: string; download?: string }[] = [
   {
     title: "ApnaScan",
-    description: "Document & ID scanner for Android.",
-    tech: ["Kotlin", "CameraX", "OpenCV"],
-    link: "https://github.com/girdhari-jaat",
+    description: "Offline document & ID card scanner for Android — CameraX capture, OpenCV edge detection, annotation studio and PDF export.",
+    tech: ["Kotlin", "Jetpack Compose", "CameraX", "OpenCV", "ML Kit"],
+    link: "https://github.com/girdhari-jaat/ApnaScan-Download",
+    download: "https://github.com/girdhari-jaat/ApnaScan-Download/releases/download/v1.0.0/ApnaScan.apk",
   },
   {
     title: "Portfolio",
