@@ -31,4 +31,4 @@ use the editor.
 
 ## Project rules
 - All portfolio text/links live in `src/content/portfolio.ts`; components only render it — keeps content easy to edit.
-- Deployed as a static prerendered site to GitHub Pages via `.github/workflows/deploy.yml` (NITRO_PRESET=github_pages); no backend.
+- Deploy only the explicitly prerendered root page and static assets from `.output/public` to GitHub Pages via `.github/workflows/deploy.yml` (NITRO_PRESET=github_pages, Vite base `/`); GitHub Pages cannot run a backend.
