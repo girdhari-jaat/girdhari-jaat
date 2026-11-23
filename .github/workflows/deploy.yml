@@ -23,23 +23,22 @@ jobs:
         with:
           node-version: "22"
       - uses: oven-sh/setup-bun@v2
-        with:
-          bun-version: "1.4.4"
       - uses: actions/configure-pages@v5
       - name: Install dependencies
-        run: bun install --frozen-lockfile
-      - name: Build static production website
+        run: bun install
+      - name: Build portfolio
         run: bun run build
-        env:
-          NITRO_PRESET: github_pages
-      - name: Verify production output
+      - name: Verify production output (dist/client)
         run: |
-          test -s .output/public/index.html
-          test -d .output/public/assets
-          touch .output/public/.nojekyll
+          ls -la dist/client
+          test -s dist/client/index.html
+          test -d dist/client/assets
+          grep -q "Girdhari Jaat" dist/client/index.html
+          rm -f dist/client/_headers
+          touch dist/client/.nojekyll
       - uses: actions/upload-pages-artifact@v3
         with:
-          path: .output/public
+          path: dist/client
 
   deploy:
     needs: build
