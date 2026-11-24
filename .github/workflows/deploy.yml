@@ -27,18 +27,19 @@ jobs:
         run: npm install --no-audit --no-fund
       - name: Build portfolio
         run: npm run build
-      # The static website is written to dist/client (dist/server is unused on Pages).
+      # Outside Lovable, `npm run build` writes the static website to .output/public
+      # (verified with a clean build). .output/server is unused on GitHub Pages.
       - name: Verify production output
         run: |
-          ls -la dist/client
-          test -s dist/client/index.html
-          test -d dist/client/assets
-          grep -aq "Girdhari Jaat" dist/client/index.html
-          rm -f dist/client/_headers
-          touch dist/client/.nojekyll
+          ls -la .output/public
+          test -s .output/public/index.html
+          test -d .output/public/assets
+          grep -aq "Girdhari Jaat" .output/public/index.html
+          rm -f .output/public/_headers
+          touch .output/public/.nojekyll
       - uses: actions/upload-pages-artifact@v3
         with:
-          path: dist/client
+          path: .output/public
 
   deploy:
     needs: build
